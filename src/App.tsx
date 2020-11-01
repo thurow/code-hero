@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Header } from './components/Header';
+import { Header } from './components';
+import { Home } from './pages/Home';
 
 function App() {
   return (
@@ -10,9 +11,9 @@ function App() {
         <main>
           <Switch>
             <Route path="/">
-              oioi
+              <Home />
             </Route>
-            <Route path="/hero/:hero">
+            <Route path="/heroes/:heroId">
               hero
             </Route>
           </Switch>
