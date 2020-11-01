@@ -1,18 +1,22 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, RenderResult, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import { Home } from './Home'
-import { AppBuilder } from '../../../__tests__'
+import { AppBuilder, AppBuilderProps } from '../../../__tests__'
 
-const setup = () => {
+const setup = (appBuilderProps?: AppBuilderProps): RenderResult => {
   return render(
-    <AppBuilder>
+    <AppBuilder {...appBuilderProps}>
       <Home />
     </AppBuilder>
   )
 }
 
-test('should render home page', () => {
+test('should render home page', async () => {
   setup()
+
+  expect(screen.queryByTestId('loading-heroes')).toBeInTheDocument()
+
+  await waitForElementToBeRemoved(() => screen.getByTestId('loading-heroes'))
 
   expect(screen.queryByText('Busca de personagens')).toBeInTheDocument()
 })
