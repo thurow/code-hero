@@ -24,6 +24,10 @@ export function Home() {
     }
   }, [api, page])
 
+  const pageCount = React.useMemo(() => {
+    return Math.ceil(data?.total ?? 0 / 4)
+  }, [data])
+
   const handleChangePage = React.useCallback((newPage: number) => {
     setPage(newPage)
   }, [])

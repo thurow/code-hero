@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import { CharacterFromList } from '../../../services/api.interfaces'
 
+import './HeroesList.scss'
+
 export interface HeroesListProps {
   data: CharacterFromList[]
 }
@@ -19,7 +21,7 @@ const HeroesList = ({ data }: HeroesListProps): JSX.Element => {
             {data.map(hero => (
               <li className="heroes-table__items hero" key={hero.id}>
                 <div className="hero__name">
-                  <img src={`${hero.thumbnail?.path}.${hero.thumbnail?.extension}`} alt={hero.name} width="48" />
+                  <img src={`${hero.thumbnail?.path}.${hero.thumbnail?.extension}`} alt={hero.name} width="48" height="48" />
                   <strong>{hero.name}</strong>
                 </div>
                 <div className="hero__series">
