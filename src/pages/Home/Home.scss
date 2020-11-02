@@ -4,13 +4,21 @@ $mobile-layout-max-width: 767px;
   h1 {
     font-size: 3.2rem;
     margin: 4rem auto 1.6rem;
-    max-width: 1140px;
+    max-width: 1188px;
+    padding: 0 2.4rem;
     width: 100%;
 
     @media (max-width: $mobile-layout-max-width) {
       font-size: 2.4rem;
       text-align: center;
       margin: 2.4rem auto;
+      padding: 0;
     }
+  }
+
+  &__heroes {
+    max-width: 1188px;
+    padding: 0 2.4rem;
+    width: 100%;
   }
 }
