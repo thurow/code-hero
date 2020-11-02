@@ -15,11 +15,11 @@ function App() {
         <main>
           <ApiContextProvider api={api}>
             <Switch>
-              <Route path="/">
+              <Route path="/" exact>
                 <Home />
               </Route>
               <Route path="/heroes/:heroId">
-                hero
+                hero kakalal
               </Route>
             </Switch>
           </ApiContextProvider>

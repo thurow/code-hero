@@ -14,7 +14,6 @@ export interface  ApiInterface {
 export const Api = (): ApiInterface => {
   return {
     async getHeroes(pageToLoad: number) {
-
       return await fetch(`${API_URL}characters?ts=1&apikey=${API_KEY}&hash=${HASH}&limit=${DEFAULT_OFFSET}&offset=${pageToLoad * DEFAULT_OFFSET}`)
         .then<CharacterListDataWrapper>(res => res.json())
         .then(({ data }) => data as CharacterListDataContainer)

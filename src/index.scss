@@ -17,3 +17,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
 }
+
+.App {
+  height: 100vh;
+}
+
+main {
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .page-content {
+    height: 100%;
+  }
+}
