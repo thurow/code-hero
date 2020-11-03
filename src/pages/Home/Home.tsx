@@ -7,6 +7,7 @@ import { NameSearch } from './NameSearch'
 import { useDebounce } from '../../hooks'
 
 import './Home.scss'
+import Loading from '../../components/Loading/Loading'
 
 export function Home() {
   const [loading, setLoading] = React.useState<boolean>(true)
@@ -51,7 +52,7 @@ export function Home() {
       <NameSearch nameFilter={nameFilter} handleChange={handleChangeNameFilter} />
       <section className="page-content__heroes">
         {
-          loading ? <p data-testid="loading-heroes">Carregando...</p> : (
+          loading ? <Loading /> : (
             <>
               <HeroesList data={data?.results ?? []} />
               <section className="pagination">

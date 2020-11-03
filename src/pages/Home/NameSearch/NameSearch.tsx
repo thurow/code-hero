@@ -12,6 +12,7 @@ export const NameSearch = ({ nameFilter, handleChange }: NameSearchProps): JSX.E
     <section className="hero-search">
       <label htmlFor="name">Nome do personagem</label>
       <input
+        placeholder="Search"
         type="search"
         name="name"
         id="name"

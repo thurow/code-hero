@@ -14,9 +14,9 @@ const setup = (appBuilderProps?: AppBuilderProps): RenderResult => {
 test('should render home page', async () => {
   setup()
 
-  expect(screen.queryByTestId('loading-heroes')).toBeInTheDocument()
+  expect(screen.queryByTestId('loading-data')).toBeInTheDocument()
 
-  await waitForElementToBeRemoved(() => screen.getByTestId('loading-heroes'))
+  await waitForElementToBeRemoved(() => screen.getByTestId('loading-data'))
 
   expect(screen.queryByText('Busca de personagens')).toBeInTheDocument()
 })
