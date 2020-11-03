@@ -3,33 +3,42 @@ import ReactPaginate from 'react-paginate'
 import { useApi } from '../../context'
 import { CharacterListDataContainer } from '../../services/api.interfaces'
 import { HeroesList } from './HeroesList'
+import { NameSearch } from './NameSearch'
+import { useDebounce } from '../../hooks'
 
 import './Home.scss'
 
 export function Home() {
   const [loading, setLoading] = React.useState<boolean>(true)
   const [data, setData] = React.useState<CharacterListDataContainer>()
-  const [page, setPage] = React.useState<number>(1)
+  const [page, setPage] = React.useState<number>(0)
+  const [nameFilter, setNameFilter] = React.useState<string>("")
+  const debouncedNameFilter = useDebounce(nameFilter, 500)
   const api = useApi()
 
   const loadHeroes = React.useCallback(async () => {
     try {
       setLoading(true)
-      const result = await api.getHeroes(page)
+      const result = await api.getHeroes(page + 1, debouncedNameFilter)
       setData(result)
     } catch (err) {
       console.error(err)
     } finally {
       setLoading(false)
     }
-  }, [api, page])
+  }, [api, page, debouncedNameFilter])
 
   const pageCount = React.useMemo(() => {
-    return Math.ceil((data?.total ?? 0) / 4)
+    return Math.floor((data?.total ?? 0) / 4)
   }, [data])
 
   const handleChangePage = React.useCallback(({ selected: selectedPage }) => {
     setPage(selectedPage)
+  }, [])
+
+  const handleChangeNameFilter = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setPage(() => 0)
+    setNameFilter(event.target.value)
   }, [])
 
   React.useEffect(() => {
@@ -39,6 +48,7 @@ export function Home() {
   return (
     <div className="page-content">
       <h1>Busca de personagens</h1>
+      <NameSearch nameFilter={nameFilter} handleChange={handleChangeNameFilter} />
       <section className="page-content__heroes">
         {
           loading ? <p data-testid="loading-heroes">Carregando...</p> : (
