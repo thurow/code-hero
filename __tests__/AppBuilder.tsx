@@ -10,6 +10,8 @@ export interface AppBuilderProps {
 const AppBuilder = ({ children, apiOverrides }: AppBuilderProps) => {
   const api: ApiInterface = {
     getHeroes: async (_page: number) => Promise.resolve({}),
+    getHero: async (_heroId: string) => Promise.resolve({}),
+    getHeroComics: async (_heroId: string) => Promise.resolve({}),
     ...apiOverrides
   }
 
