@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Header } from './components';
 import { ApiContextProvider } from './context';
+import { Hero } from './pages/Hero';
 import { Home } from './pages/Home';
 import { Api } from './services';
 
@@ -19,7 +20,7 @@ function App() {
                 <Home />
               </Route>
               <Route path="/heroes/:heroId">
-                hero kakalal
+                <Hero />
               </Route>
             </Switch>
           </ApiContextProvider>

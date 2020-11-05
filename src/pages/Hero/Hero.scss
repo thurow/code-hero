@@ -1,0 +1,140 @@
+$mobile-layout-max-width: 768px;
+
+.hero-details {
+  align-items: center;
+  display: grid;
+  gap: 6rem 3.2rem;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: "back ."
+                       "avatar name"
+                       "description description"
+                       "comics comics";
+  margin: 4rem auto;
+  max-width: 1188px;
+  padding: 0 2.4rem;
+  width: 100%;
+
+  @media (max-width: $mobile-layout-max-width) {
+    grid-template-areas: "back ."
+                         "avatar avatar"
+                         "name name"
+                         "description description"
+                         "comics comics";
+    gap: 2.4rem .8rem;
+  }
+
+  &__back {
+    grid-area: back;
+
+    button {
+      background: #5DAFFF;
+      border: none;
+      border-radius: 4px;
+      box-shadow: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.4rem;
+      padding: .8rem 1.6rem;
+
+      &:hover,
+      &:focus {
+        background: #167ABC;
+      }
+    }
+  }
+
+  &__avatar {
+    grid-area: avatar;
+    background: #fff;
+    padding: 1.6rem;
+    border-radius: 4px;
+    text-align: center;
+
+    @media (max-width: $mobile-layout-max-width) {
+      max-width: 85%;
+      margin: 0 auto;
+    }
+
+    img {
+      @media (max-width: $mobile-layout-max-width) {
+        min-width: 100px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__name {
+    grid-area: name;
+
+    h1 {
+      font-size: 4rem;
+
+      @media (max-width: $mobile-layout-max-width) {
+        font-size: 3.2rem;
+        text-align: center;
+        padding: 0;
+        margin-top: 0;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 3.2rem;
+
+    &:after {
+      content: '';
+      display: block;
+      margin-top: 1.6rem;
+      width: 130px;
+      height: 4px;
+      border-radius: 8px;
+      background-color: #555555;
+    }
+
+    @media (max-width: $mobile-layout-max-width) {
+      font-size: 2.4rem;
+      padding: 0;
+
+      &:after {
+        margin-top: .8rem;
+        width: 75px;
+        height: 3px;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+
+  &__comics {
+    grid-area: comics;
+
+    ul {
+      display: grid;
+      grid-gap: 2.4rem 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        background: #fff;
+        border-radius: 4px;
+        padding: 1.6rem;
+        box-shadow: 0px 0px 5px #00000033;
+        text-align: center;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0px 0px 5px #000000;
+        }
+      }
+    }
+  }
+}

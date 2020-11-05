@@ -14,9 +14,18 @@ export interface SeriesList {
 export interface CharacterFromList {
   id?: number
   name?: string
+  description?: string
   thumbnail?: Image
   series?: SeriesList
   events?: EventList
+}
+
+export interface Comic {
+  id?: number
+  title?: string
+  description?: string
+  thumbnail?: Image
+  images?: Image[]
 }
 
 export interface CharacterListDataContainer {
@@ -27,6 +36,14 @@ export interface CharacterListDataContainer {
   results?: CharacterFromList[]
 }
 
+export interface ComicDataContainer {
+  offset?: number
+  limit?: number
+  total?: number
+  count?: number
+  results?: Comic[]
+}
+
 export interface CharacterListDataWrapper {
   code?: number
   status?: string
@@ -34,5 +51,15 @@ export interface CharacterListDataWrapper {
   attributionText?: string
   attributionHTML?: string
   data?: CharacterListDataContainer
+  etag?: string
+}
+
+export interface ComicDataWrapper {
+  code?: number
+  status?: string
+  copyright?: string
+  attributionText?: string
+  attributionHTML?: string
+  data?: ComicDataContainer
   etag?: string
 }

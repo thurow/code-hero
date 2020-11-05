@@ -49,29 +49,31 @@ export function Home() {
   return (
     <div className="page-content">
       <h1>Busca de personagens</h1>
-      <NameSearch nameFilter={nameFilter} handleChange={handleChangeNameFilter} />
+      <NameSearch nameFilter={nameFilter} handleChange={handleChangeNameFilter} loading={loading} />
       <section className="page-content__heroes">
         {
           loading ? <Loading /> : (
             <>
               <HeroesList data={data?.results ?? []} />
-              <section className="pagination">
-                <ReactPaginate
-                  previousLabel={'<'}
-                  nextLabel={'>'}
-                  breakClassName={'hidden'}
-                  pageCount={pageCount}
-                  forcePage={page}
-                  onPageChange={handleChangePage}
-                  pageRangeDisplayed={2}
-                  marginPagesDisplayed={1}
-                  containerClassName={"pagination__list"}
-                  previousLinkClassName={"pagination__link"}
-                  nextLinkClassName={"pagination__link"}
-                  disabledClassName={"pagination__link--disabled"}
-                  activeClassName={"pagination__link--active"}
-                />
-              </section>
+              {pageCount > 1 && (
+                <section className="pagination">
+                  <ReactPaginate
+                    previousLabel={'<'}
+                    nextLabel={'>'}
+                    breakClassName={'hidden'}
+                    pageCount={pageCount}
+                    forcePage={page}
+                    onPageChange={handleChangePage}
+                    pageRangeDisplayed={2}
+                    marginPagesDisplayed={1}
+                    containerClassName={"pagination__list"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                  />
+                </section>
+              )}
             </>
           )}
       </section>
