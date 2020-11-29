@@ -7,7 +7,7 @@ const Header = (): JSX.Element => {
     return (
       <header className="main-header">
         <Link to="/">
-          <img src={Logo} alt="Objective" width="96" />
+          <img src={Logo} alt="Code Hero" width="96" />
         </Link>
 
         <div className="main-header__info">
